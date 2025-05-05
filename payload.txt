@@ -1,0 +1,4 @@
+{
+    "isAdmin":true,
+    "email":"a@ok.com"
+}
