@@ -7,12 +7,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const password_path = path.join(__dirname,"passwords.txt");
 const algorithms = ["HS256", "HS384", "HS512"] as const;
+const token_path = path.join(__dirname,"token.txt");
+const token = readFileSync(token_path,'utf-8');
 
-export function brute(token:string):string|undefined{
+export function brute():string|undefined{
         const password_list = readFileSync(password_path,"utf-8").split(/\r?\n/);
         for(const pass of password_list){
             for(const alg of algorithms){
-                console.log(pass)
                 try {
                     const verify = jwt.verify(token,pass.trim(),{algorithms:[alg]});
                     return pass
