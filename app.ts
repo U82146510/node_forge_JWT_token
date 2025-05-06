@@ -1,6 +1,6 @@
-import { get_token } from "./forge_token/forge_token.ts";
-import {brute} from './brute_token/brute.ts';
+import { get_token } from './forge_token/forge_token.ts';
 import readline from "readline";
+import {start_brute} from './brute_token/brute_main.ts';
 
 const rl = readline.createInterface({
     input:process.stdin,
@@ -16,15 +16,8 @@ rl.question('Your choice: ', (input: string) => {
         get_token();
         console.log('done');
     }
-
     if (input === '2' || input.toLowerCase() === 'brute') {
-        const rs = brute();
-        if (!rs) {
-            console.log('done, nothing found!');
-        } else {
-            console.log('Result:', rs);
-        }
+        start_brute()
     }
-
     rl.close();
 });
